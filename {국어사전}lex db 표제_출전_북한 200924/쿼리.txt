@@ -1,0 +1,7 @@
+SELECT DISTINCT ent.source , ent.eid, ent.ohw, ent.origin, ent.morph, ent.pronun, ent.technic, ex.suppos, ex.subpos
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE source LIKE '%북한%' ORDER BY shw 

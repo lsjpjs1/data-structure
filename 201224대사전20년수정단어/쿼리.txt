@@ -1,0 +1,16 @@
+SELECT  * FROM
+(SELECT DISTINCT ent.eid, ent.onum, ent.ohw, ex.glevel, ex.grp1st, ex.grp2nd, ex.grp3rd, ex.grp4th, ent.morph, ent.technic, ent.pronun, ex.suppos, re.before_event, re.after_event, re.event_time ,ent.checkup
+FROM 
+entry ent
+LEFT JOIN
+explan ex
+ON ent.eid = ex.eid
+LEFT JOIN
+revision re
+ON ent.eid = re.eid
+WHERE 
+re.event_time LIKE '%2020%'
+AND (ent.checkup LIKE '%미반영%')
+ORDER BY ent.eid,re.event_time DESC)
+AS abc
+GROUP BY eid

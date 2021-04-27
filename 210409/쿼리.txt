@@ -1,0 +1,14 @@
+SELECT DISTINCT ent.eid, ent.ohw,  ent.morph, ex.explan
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE 
+source LIKE '%북한%' 
+AND checkup NOT LIKE '%삭제%'
+AND checkup NOT LIKE '%DB%' 
+AND checkup NOT LIKE '%디비%' 
+AND morph LIKE '%-%'
+ORDER BY ohw
+

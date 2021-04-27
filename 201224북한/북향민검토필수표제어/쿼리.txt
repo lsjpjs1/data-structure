@@ -1,0 +1,10 @@
+SELECT DISTINCT ent.eid, ent.ohw, ex.glevel, ex.grp1st, ex.grp2nd, ex.grp3rd, ex.grp4th, ent.morph, ent.technic, ent.pronun, ex.suppos, ex.explan, ent.useform
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE 
+source LIKE '%북한%' 
+AND checkup LIKE '%북향민%' 
+ORDER BY ent.eid, grp1st,grp2nd,grp3rd,grp4th

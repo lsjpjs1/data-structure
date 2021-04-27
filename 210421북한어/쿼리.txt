@@ -1,0 +1,10 @@
+SELECT DISTINCT ent.eid, ent.ohw, ent.origin, ent.morph, ent.pronun, ex.suppos, ex.subpos
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE 
+source LIKE '%미등재어%'
+AND checkup NOT LIKE '%삭제%' 
+ORDER BY ent.ohw, grp1st,grp2nd,grp3rd,grp4th

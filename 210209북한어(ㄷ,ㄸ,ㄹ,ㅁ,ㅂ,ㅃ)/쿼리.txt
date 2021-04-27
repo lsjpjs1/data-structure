@@ -1,0 +1,12 @@
+SELECT DISTINCT ent.eid, ent.ohw, ex.glevel, ex.grp1st, ex.grp2nd, ex.grp3rd, ex.grp4th, ent.morph, ent.technic, ent.pronun, ex.suppos, ex.explan, ent.useform
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE 
+source LIKE '%북한%' 
+AND (jamo LIKE 'ㄷ%' OR jamo LIKE 'ㄸ%'OR jamo LIKE 'ㄹ%'OR jamo LIKE 'ㅁ%'OR jamo LIKE 'ㅂ%'OR jamo LIKE 'ㅃ%')
+AND checkup NOT LIKE '%삭제 대상%'
+AND checkup NOT LIKE '%DB%' 
+ORDER BY ent.ohw, grp1st,grp2nd,grp3rd,grp4th

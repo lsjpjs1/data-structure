@@ -1,0 +1,9 @@
+SELECT DISTINCT ent.eid, ent.ohw, ent.onum, ent.origin,ent.morph,ent.pronun,ent.technic,ex.glevel,grp1st,grp2nd,grp3rd,grp4th,ex.suppos,ex.subpos,ex.explan
+FROM 
+del_entry ent
+LEFT JOIN
+del_explan ex
+ON ent.eid = ex.eid
+WHERE 
+ent.checkup LIKE '%북향민%'
+

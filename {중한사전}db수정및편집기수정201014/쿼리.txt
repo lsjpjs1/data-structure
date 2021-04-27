@@ -1,0 +1,9 @@
+기존중한 -> 변경,추가 수정 쿼리 
+UPDATE kuck_senses
+SET class_1st_val = REPLACE(class_1st_val ,'','方') ,class_2nd_val = REPLACE(class_2nd_val ,'','方') ,class_3rd_val = REPLACE(class_3rd_val ,'','方')  
+WHERE class_1st_val LIKE '%%' OR class_2nd_val LIKE '%%' OR class_3rd_val LIKE '%%'
+
+변경, 추가 중에서 (,) 로 잘못 들어가 있는 것 , 로 바꾸기 쿼리
+UPDATE kuck_senses
+SET class_1st_val = REPLACE(class_1st_val ,'(臺)','臺') ,class_2nd_val = REPLACE(class_2nd_val ,'(臺)','臺') ,class_3rd_val = REPLACE(class_3rd_val ,'(臺)','臺')  
+WHERE class_1st_val LIKE '%(臺)%' OR class_2nd_val LIKE '%(臺)%' OR class_3rd_val LIKE '%(臺)%'

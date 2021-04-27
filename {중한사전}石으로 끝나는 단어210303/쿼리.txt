@@ -1,0 +1,28 @@
+SELECT DISTINCT
+ent.entry_id,
+ent.headword,
+ent.pinyin_std,
+ent.pinyin_app,
+ent.pinyin_var,
+ent.pinyin_prn,
+ent.hanja_pam,
+sen.class_1st_ord,
+sen.class_1st_val,
+sen.class_2nd_ord,
+sen.class_2nd_val,
+sen.class_3rd_ord,
+sen.class_3rd_val,
+sen.sense,
+sen.rterm_std,
+sen.rterm_syn,
+sen.rterm_ant,
+sen.rterm_ref,
+sen.rterm_glb,
+sen.useform,
+ex.example_cn,
+ex.example_kr
+FROM kuck_entries AS ent
+LEFT JOIN kuck_senses AS sen ON ent.entry_id = sen.entry_id
+LEFT JOIN kuck_examples AS ex ON ex.sense_id = sen.sense_id
+WHERE ent.headword LIKE '%石' AND ent.state='등록'
+GROUP BY ent.entry_id

@@ -1,0 +1,6 @@
+SELECT DISTINCT ent.source , ent.eid, ent.ohw, ent.origin, ent.morph, ent.pronun, ent.technic, ex.suppos, ex.subpos, rev.event_type, rev.table_name, rev.column_name, rev.before_event, rev.after_event, rev.event_time
+FROM 
+del_entry AS ent
+LEFT JOIN del_explan AS ex ON ent.eid = ex.eid
+LEFT JOIN revision AS rev ON rev.eid = ex.eid
+WHERE reviser = '송지우' AND (DAY(event_time) = 24 OR DAY(event_time) = 25) AND MONTH(event_time) = 9 AND (column_name = '표제어' OR event_type='등록') ORDER BY eid

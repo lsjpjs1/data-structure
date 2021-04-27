@@ -1,0 +1,5 @@
+오기입 일부
+SELECT ent1.hanja_no,ent1.entry_id entry_id_ent1,ent1.headword headword_ent1,ent2.entry_id entry_id_ent2,ent2.headword headword_ent2,ent1.pinyin_std pinying_std_ent1,ent2.pinyin_std pinyin_std_ent2 FROM (SELECT * FROM kuck_entries GROUP BY hanja_no) ent1 LEFT JOIN kuck_entries ent2 ON ent1.hanja_no = ent2.hanja_no WHERE ent2.pinyin_std NOT LIKE CONCAT(ent1.pinyin_std,'%') AND (LEFT(ent1.pinyin_std,1)=LEFT(ent2.pinyin_std,1)) AND ent2.state='등록' AND ent1.state = '등록'
+
+오기입 전체
+SELECT ent1.hanja_no,ent1.entry_id entry_id_ent1,ent1.headword headword_ent1,ent2.entry_id entry_id_ent2,ent2.headword headword_ent2,ent1.pinyin_std pinying_std_ent1,ent2.pinyin_std pinyin_std_ent2 FROM (SELECT * FROM kuck_entries GROUP BY hanja_no) ent1 LEFT JOIN kuck_entries ent2 ON ent1.hanja_no = ent2.hanja_no WHERE ent2.pinyin_std NOT LIKE CONCAT(ent1.pinyin_std,'%') AND ent2.state='등록' AND ent1.state = '등록'

@@ -1,0 +1,86 @@
+SELECT DISTINCT
+ent.entry_id,
+ent.headword,
+ent.pinyin_std,
+ent.pinyin_app,
+ent.pinyin_var,
+ent.hanja_pam,
+sen.class_1st_ord,
+sen.class_1st_val,
+sen.class_2nd_ord,
+sen.class_2nd_val,
+sen.class_3rd_ord,
+sen.class_3rd_val,
+sen.sense,
+sen.rterm_std,
+sen.rterm_syn,
+sen.rterm_ant,
+sen.rterm_ref,
+sen.rterm_glb,
+sen.useform,
+ex.example_cn,
+ex.example_kr
+FROM kuck_entries AS ent
+LEFT JOIN kuck_senses AS sen ON ent.entry_id = sen.entry_id
+LEFT JOIN kuck_examples AS ex ON ex.sense_id = sen.sense_id
+WHERE 
+
+(ent.entry_id IN 
+('216035',
+'287491',
+'287492',
+'287493',
+'287494',
+'287495',
+'287496',
+'287497',
+'287568',
+'287569',
+'287570',
+'287571',
+'287572',
+'287573',
+'287574',
+'287575',
+'287576',
+'287584',
+'287585',
+'287586',
+'287588',
+'287589',
+'287590',
+'287592',
+'287593'
+)
+OR (ent.entry_id >= 208004 AND ent.entry_id <= 219120) 
+)
+AND ent.entry_id NOT IN ('208034',
+'213455',
+'213915',
+'215229',
+'215403',
+'208849',
+'208884',
+'208885',
+'210411',
+'215928',
+'216031',
+'216138',
+'216691',
+'218012',
+'210320',
+'210573',
+'210927',
+'211461',
+'208838',
+'218013',
+'218784',
+'211547',
+'218789',
+'208848',
+'212234',
+'215701',
+'216063'
+) 
+AND state = '등록'
+ORDER BY ent.entry_id
